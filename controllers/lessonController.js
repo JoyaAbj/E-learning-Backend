@@ -6,7 +6,7 @@ const addLesson = async (req,res) => {
     const {lesson_name, overview, content, level_id} = req.body;
     try{
         const result = await db.query(
-            `INSERT INTO lesson (lesson_name, overview, content, level_id) VALUES (?,?,?,?)`,
+            `INSERT INTO lessons (lesson_name, overview, content, level_id) VALUES (?,?,?,?)`,
             [lesson_name, overview, content, level_id]
         );
         console.log(result);
@@ -26,7 +26,7 @@ const addLesson = async (req,res) => {
     /*get*/
     const getLessonByID = async (req, res) => {
         try {
-          const [result] = await db.query(`SELECT * FROM lessons WHERE id = ?`, [
+          const [result] = await db.query(`SELECT * FROM lessons WHERE lesson_id = ?`, [
             req.params.id,
           ]);
           res.status(200).json({

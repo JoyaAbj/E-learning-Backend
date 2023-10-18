@@ -9,7 +9,8 @@ const connection = mysql.createPool({
     host: DATABASE_HOST,
     user: DATABASE_USER,
     password: DATABASE_PASSWORD,
-    database: DATABASE_NAME
+    database: DATABASE_NAME,
+    port: process.env.PORT
 });
 
 connection.getConnection((err) =>{
